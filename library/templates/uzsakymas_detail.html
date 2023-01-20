@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1><strong>Paslaugos užsakymo detali informacija</strong></h1>
+<hr>
+<p>Užsakovas: {{ uzsakymas.automobilis.klientas }}</p>
+<p>Automobilis: {{ uzsakymas.automobilis.automobilis_id.marke }}, modelis: {{ uzsakymas.automobilis.automobilis_id.modelis }}</p>
+<p>Metai: {{ uzsakymas.automobilis.automobilis_id.metai }}</p>
+<p>Variklis: {{ uzsakymas.automobilis.automobilis_id.variklis }}</p>
+<p>Valstybiniai numeriai: {{ uzsakymas.automobilis.valstybinis_nr }}</p>
+<p>VIN kodas: {{ uzsakymas.automobilis.vin_kodas }}</p>
+<hr>
+{% for uzsakymas_eil in uzsakymas.uzsakymoeilute_set.all %}
+<hr>
+<p>Paslauga: {{ uzsakymas_eil.paslauga_id }}</p>
+<p>Paslaugos kaina: {{ uzsakymas_eil.paslauga_id.kaina }}€</p>
+<hr>
+<hr>
+<p>Užsakymų kiekis: {{ uzsakymas_eil.kiekis }}</p>
+<p>Užsakymo kaina: {{ uzsakymas_eil.uzsakymas_id.suma }}€</p>
+<hr>
+<hr>
+<p>Statusas: </p>
+<p class="{% if uzsakymas.status == 'g' %}text-success
+          {% elif uzsakymas.status == 's' %}text-danger
+          {% else %}text-warning{% endif %}"> {{uzsakymas_eil.uzsakymas_id.get_status_display}} </p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <h2>{{automobilis.automobilis_id.marke}} informacija:</h2>
+    <hr/>
+    <p>Modelis: {{automobilis.automobilis_id.modelis }}</p>
+    <p>Metai: {{automobilis.automobilis_id.metai }}</p>
+    <p>Variklis: {{automobilis.automobilis_id.variklis }}</p>
+    <p>Numeriai: {{automobilis.valstybinis_nr }}</p>
+    <p>VIN kodas: {{automobilis.vin_kodas }}</p>
+    <p>Savininkas: {{automobilis.klientas }}</p>
+</div>
+{% endblock %}
+
